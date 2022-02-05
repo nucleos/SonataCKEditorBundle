@@ -1,0 +1,113 @@
+{% extends '@SonataMedia/MediaAdmin/list.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        $(function () {
+            $(".mosaic-inner-link").click(function (e) {
+                e.preventDefault();
+                window.opener.CKEDITOR.tools.callFunction({{ app.request.get('CKEditorFuncNum')|escape('js') }}, $(this).attr("href"));
+                window.close();
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block sonata_header %}{% endblock %}
+{% block sonata_left_side %}{% endblock %}
+{% block sonata_nav %}{% endblock %}
+{% block sonata_breadcrumb %}{% endblock %}
+
+{% block sonata_wrapper %}
+    {% block sonata_page_content %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+{% block list_footer %}
+    {% if datagrid_has_results %}
+        <div class="box-footer">
+            <div class="form-inline clearfix">
+                {% if not app.request.isXmlHttpRequest %}
+                    <div class="pull-right">
+                        {% block pager_results %}
+                            {% include get_admin_template('pager_results', admin.code) %}
+                        {% endblock %}
+                    </div>
+                {% endif %}
+            </div>
+
+            {% block pager_links %}
+                {% if admin.datagrid.pager.haveToPaginate() %}
+                    <hr/>
+                    {% include get_admin_template('pager_links', admin.code) %}
+                {% endif %}
+            {% endblock %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block table_body %}
+    <tbody>
+        <tr>
+            <td colspan="{{
+                app.request.isXmlHttpRequest
+                    ? admin.list.getElements()|filter(element => element.getOption('ajax_hidden') != true)|length
+                        - admin.list.has(constant('Sonata\\AdminBundle\\Datagrid\\ListMapper::NAME_ACTIONS'))
+                        - admin.list.has(constant('Sonata\\AdminBundle\\Datagrid\\ListMapper::NAME_BATCH'))
+                    : admin.list.getElements()|length
+            }}">
+                <div class="row">
+                    {% for object in admin.datagrid.results %}
+                        {% set meta = admin.getObjectMetadata(object) %}
+                        {% set mosaic_content %}
+                            <div class="mosaic-box-outter">
+                                <div class="mosaic-inner-box">
+                                    <div class="mosaic-inner-box-default">
+                                        {% block sonata_mosaic_background %}
+                                            {{ sonata_thumbnail(object, 'admin', {'width': 75, 'height': 60}) }}
+                                        {% endblock %}
+                                        {% block sonata_mosaic_default_view %}
+                                            <span class="mosaic-box-label label label-primary pull-right">#{{ admin.id(object) }}</span>
+                                        {% endblock %}
+                                    </div>
+
+                                    {#
+                                        This box will be display when the mouse is on the box
+                                        You can add more description
+                                    #}
+                                    <div class="mosaic-inner-box-hover">
+                                        {% block sonata_mosaic_hover_view %}
+                                            <span class="mosaic-box-label label label-primary pull-right">#{{ admin.id(object) }}</span>
+                                            {{ meta.description }}
+                                        {% endblock %}
+                                    </div>
+                                </div>
+
+                                <div class="mosaic-inner-text">
+                                    {% block sonata_mosaic_description %}
+                                        {{ meta.title|u.truncate(40) }}
+                                    {% endblock %}
+                                </div>
+                            </div>
+                        {% endset %}
+                        <div class="col-xs-6 col-sm-3 mosaic-box sonata-ba-list-field-batch sonata-ba-list-field">
+                            <a class="mosaic-inner-link" href="{{ sonata_path(object, 'reference') }}">
+                                {{ mosaic_content }}
+                            </a>
+                        </div>
+
+                        {% if loop.index % 4 == 0 %}
+                            <div class="clearfix hidden-xs"></div>
+                        {% endif %}
+                        {% if loop.index % 2 == 0 %}
+                            <div class="clearfix visible-xs"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+    </tbody>
+{% endblock %}
+

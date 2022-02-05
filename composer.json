@@ -1,0 +1,75 @@
+{
+    "name": "nucleos/sonata-ckeditor-bundle",
+    "description": "Symfony Bundle that allows sonata media management for the CKEditor.",
+    "license": "MIT",
+    "type": "symfony-bundle",
+    "keywords": [
+        "symfony",
+        "sonata",
+        "sonata-media",
+        "ckeditor",
+        "autoconfigure"
+    ],
+    "authors": [
+        {
+            "name": "Christian Gripp",
+            "email": "mail@core23.de"
+        }
+    ],
+    "homepage": "https://nucleos.rocks",
+    "funding": [
+        {
+            "type": "github",
+            "url": "https://github.com/sponsors/core23"
+        },
+        {
+            "type": "opencollective",
+            "url": "https://opencollective.com/core23"
+        },
+        {
+            "type": "ko-fi",
+            "url": "https://ko-fi.com/core23"
+        },
+        {
+            "type": "other",
+            "url": "https://donate.core23.de"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "friendsofsymfony/ckeditor-bundle": "^2.3",
+        "sonata-project/admin-bundle": "^4.8.1",
+        "sonata-project/media-bundle": "^4.1.1",
+        "symfony/config": "^5.4 || ^6.0",
+        "symfony/dependency-injection": "^5.4 || ^6.0",
+        "symfony/form": "^5.4 || ^6.0",
+        "symfony/http-kernel": "^5.4 || ^6.0"
+    },
+    "require-dev": {
+        "doctrine/doctrine-bundle": "^1.12 || ^2.0",
+        "doctrine/orm": "^2.7",
+        "ergebnis/composer-normalize": "^2.11",
+        "matthiasnoback/symfony-dependency-injection-test": "^4.3",
+        "sonata-project/classification-bundle": "^4.0.2",
+        "sonata-project/doctrine-orm-admin-bundle": "^4.2",
+        "symfony/browser-kit": "^5.4 || ^6.0",
+        "symfony/phpunit-bridge": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Nucleos\\SonataCKEditorBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Nucleos\\SonataCKEditorBundle\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true
+        },
+        "sort-packages": true
+    }
+}

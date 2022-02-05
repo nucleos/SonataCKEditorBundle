@@ -1,0 +1,7 @@
+_extends: .github
+
+repository:
+  name: SonataCKEditorBundle
+  description: ⚙️ Sonata media management for the CKEditor
+  homepage: https://nucleos.rocks
+  topics: hacktoberfest, symfony, symfony-bundle, bundle, sonata-media, ckeditor, sonata, autoconfigure

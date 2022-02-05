@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" backupGlobals="false" colors="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" bootstrap="tests/bootstrap.php" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">./src/</directory>
+    </include>
+  </coverage>
+  <php>
+    <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0"/>
+    <env name="KERNEL_CLASS" value="Nucleos\SonataCKEditorBundle\Tests\App\AppKernel"/>
+  </php>
+  <testsuites>
+    <testsuite name="SonataCKEditorBundle Test Suite">
+      <directory>./tests/</directory>
+    </testsuite>
+  </testsuites>
+  <listeners>
+    <listener class="Symfony\Bridge\PhpUnit\SymfonyTestsListener"/>
+  </listeners>
+</phpunit>
