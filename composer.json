@@ -46,8 +46,8 @@
         "symfony/http-kernel": "^5.4 || ^6.0"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "^1.12 || ^2.0",
-        "doctrine/orm": "^2.7",
+        "doctrine/doctrine-bundle": "^2.5",
+        "doctrine/orm": "^2.11",
         "ergebnis/composer-normalize": "^2.11",
         "matthiasnoback/symfony-dependency-injection-test": "^4.3",
         "sonata-project/classification-bundle": "^4.0.2",

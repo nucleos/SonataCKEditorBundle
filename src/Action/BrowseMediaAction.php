@@ -44,6 +44,9 @@ final class BrowseMediaAction
 
     private ?CategoryManagerInterface $categoryManager;
 
+    /**
+     * @param AdminInterface<MediaInterface> $admin
+     */
     public function __construct(
         Environment $twig,
         AdminInterface $admin,
@@ -62,36 +65,38 @@ final class BrowseMediaAction
 
     /**
      * @throws AccessDeniedException
+     *
+     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     public function __invoke(Request $request): Response
     {
         $this->admin->checkAccess('list');
 
-        $datagrid = $this->admin->getDatagrid();
         $filters = $request->query->all('filter');
 
         // set the default context
         $context = $this->getContext($filters);
-
-        $datagrid->setValue('context', null, $context);
-        $datagrid->setValue('providerName', null, $this->admin->getPersistentParameter('provider'));
 
         $rootCategory = null;
         if (null !== $this->categoryManager) {
             $rootCategory = $this->getRootCategoryForContext($context);
         }
 
+        $datagrid = $this->admin->getDatagrid();
+        $datagrid->setValue('context', null, $context);
+        $datagrid->setValue('providerName', null, $this->admin->getPersistentParameter('provider'));
+
         if (null !== $rootCategory && [] === $filters) {
             $datagrid->setValue('category', null, $rootCategory->getId());
         }
 
-        if (null !== $this->categoryManager && $request->query->get('category')) {
+        if (null !== $this->categoryManager && $request->query->has('category')) {
             $category = $this->categoryManager->findOneBy([
                 'id' => $request->query->get('category'),
                 'context' => $context,
             ]);
 
-            if (!empty($category)) {
+            if (null !== $category) {
                 $datagrid->setValue('category', null, $category->getId());
             } else {
                 $datagrid->setValue('category', null, $rootCategory->getId());
@@ -128,6 +133,8 @@ final class BrowseMediaAction
 
     /**
      * Sets the admin form theme to form view. Used for compatibility between Symfony versions.
+     *
+     * @phpstan-param string[] $theme
      */
     private function setFormTheme(FormView $formView, array $theme): void
     {
@@ -138,6 +145,10 @@ final class BrowseMediaAction
 
     private function getRootCategoryForContext(string $context): ?CategoryInterface
     {
+        if (null === $this->categoryManager) {
+            return null;
+        }
+
         $rootCategories = $this->categoryManager->getAllRootCategories(false);
 
         foreach ($rootCategories as $category) {
@@ -174,6 +185,8 @@ final class BrowseMediaAction
     {
         $formats = [];
         foreach ($datagrid->getResults() as $media) {
+            \assert($media instanceof MediaInterface);
+
             $formats[$media->getId()] = $this->pool->getFormatNamesByContext($media->getContext());
         }
 

@@ -44,6 +44,9 @@ final class UploadMediaAction
 
     private ?CategoryManagerInterface $categoryManager;
 
+    /**
+     * @param AdminInterface<MediaInterface> $admin
+     */
     public function __construct(
         Environment $twig,
         AdminInterface $admin,
@@ -79,19 +82,13 @@ final class UploadMediaAction
             throw new BadRequestHttpException();
         }
 
-        $context = $request->query->get('context');
+        $context = $request->query->get('context', 'default');
 
         $media = $this->mediaManager->create();
         $media->setBinaryContent($file);
         $media->setProviderName($provider);
-
-        $category = $this->getCategory($context);
-        if ($category === null) {
-            $media->setContext($context);
-        } else {
-            $media->setContext($category->getContext());
-            $media->setCategory($category);
-        }
+        $media->setContext($context);
+        $media->setCategory($this->getCategory($context));
 
         $this->mediaManager->save($media);
 
