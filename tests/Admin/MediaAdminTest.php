@@ -36,8 +36,10 @@ final class MediaAdminTest extends IntegrationTestCase
             'upload' => $uploadedFile,
         ]);
 
-        static::assertResponseIsSuccessful();
         $response = $client->getResponse()->getContent();
+
+        static::assertResponseIsSuccessful();
+        static::assertIsString($response);
         static::assertStringContainsString('.txt', $response);
         static::assertStringContainsString('callBack', $response);
     }
@@ -45,6 +47,9 @@ final class MediaAdminTest extends IntegrationTestCase
     private function createUploadFile(): UploadedFile
     {
         $tmpfile = tempnam(sys_get_temp_dir(), 'symfony');
+
+        \assert(\is_string($tmpfile));
+
         file_put_contents($tmpfile, 'BINARY CONTENT');
 
         register_shutdown_function(static function () use ($tmpfile) {

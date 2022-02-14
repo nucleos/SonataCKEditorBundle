@@ -1,2 +1,32 @@
 parameters:
 	ignoreErrors:
+		-
+			message: "#^Cannot call method getId\\(\\) on Sonata\\\\ClassificationBundle\\\\Model\\\\CategoryInterface\\|null\\.$#"
+			count: 1
+			path: src/Action/BrowseMediaAction.php
+
+		-
+			message: "#^Method Nucleos\\\\SonataCKEditorBundle\\\\Action\\\\BrowseMediaAction\\:\\:getFormats\\(\\) has parameter \\$datagrid with generic interface Sonata\\\\AdminBundle\\\\Datagrid\\\\DatagridInterface but does not specify its types\\: T$#"
+			count: 1
+			path: src/Action/BrowseMediaAction.php
+
+		-
+			message: "#^Parameter \\#1 \\$name of method Sonata\\\\MediaBundle\\\\Provider\\\\Pool\\:\\:getFormatNamesByContext\\(\\) expects string, string\\|null given\\.$#"
+			count: 1
+			path: src/Action/BrowseMediaAction.php
+
+		-
+			message: "#^Method Nucleos\\\\SonataCKEditorBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$container with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+
+		-
+			message: "#^Method Nucleos\\\\SonataCKEditorBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$loader with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+
+		-
+			message: "#^Method Nucleos\\\\SonataCKEditorBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureRoutes\\(\\) has parameter \\$routes with no type specified\\.$#"
+			count: 1
+			path: tests/App/AppKernel.php
+

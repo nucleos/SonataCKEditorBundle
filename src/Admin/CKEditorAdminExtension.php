@@ -18,7 +18,11 @@ use Nucleos\SonataCKEditorBundle\Action\UploadMediaAction;
 use Sonata\AdminBundle\Admin\AbstractAdminExtension;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Route\RouteCollectionInterface;
+use Sonata\MediaBundle\Model\MediaInterface;
 
+/**
+ * @phpstan-extends AbstractAdminExtension<MediaInterface>
+ */
 final class CKEditorAdminExtension extends AbstractAdminExtension
 {
     public function configureRoutes(AdminInterface $admin, RouteCollectionInterface $collection): void
