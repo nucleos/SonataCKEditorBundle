@@ -21,6 +21,7 @@ use Sonata\AdminBundle\SonataAdminBundle;
 use Sonata\BlockBundle\SonataBlockBundle;
 use Sonata\Doctrine\Bridge\Symfony\SonataDoctrineBundle;
 use Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle;
+use Sonata\Form\Bridge\Symfony\SonataFormBundle;
 use Sonata\MediaBundle\SonataMediaBundle;
 use Sonata\Twig\Bridge\Symfony\SonataTwigBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -48,6 +49,7 @@ final class AppKernel extends Kernel
         yield new DoctrineBundle();
         yield new SonataDoctrineBundle();
         yield new SonataTwigBundle();
+        yield new SonataFormBundle();
         yield new SonataMediaBundle();
         yield new SonataAdminBundle();
         yield new SonataDoctrineORMAdminBundle();
