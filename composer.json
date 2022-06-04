@@ -46,12 +46,12 @@
         "symfony/http-kernel": "^5.4 || ^6.0"
     },
     "require-dev": {
-        "doctrine/doctrine-bundle": "^2.5",
-        "doctrine/orm": "^2.11",
-        "ergebnis/composer-normalize": "^2.11",
-        "matthiasnoback/symfony-dependency-injection-test": "^4.3",
-        "sonata-project/classification-bundle": "^4.0.2",
-        "sonata-project/doctrine-orm-admin-bundle": "^4.2",
+        "doctrine/doctrine-bundle": "2.6.3",
+        "doctrine/orm": "2.12.2",
+        "ergebnis/composer-normalize": "2.28.0",
+        "matthiasnoback/symfony-dependency-injection-test": "4.3.0",
+        "sonata-project/classification-bundle": "4.0.4",
+        "sonata-project/doctrine-orm-admin-bundle": "4.3.0",
         "symfony/browser-kit": "^5.4 || ^6.0",
         "symfony/phpunit-bridge": "^6.0"
     },
