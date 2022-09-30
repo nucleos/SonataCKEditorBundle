@@ -15,6 +15,7 @@ namespace Nucleos\SonataCKEditorBundle\Action;
 
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
+use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\ClassificationBundle\Model\CategoryInterface;
 use Sonata\ClassificationBundle\Model\CategoryManagerInterface;
 use Sonata\MediaBundle\Model\MediaInterface;
@@ -179,6 +180,8 @@ final class BrowseMediaAction
     }
 
     /**
+     * @psalm-param DatagridInterface<ProxyQueryInterface<MediaInterface>> $datagrid
+     *
      * @return array<array-key, mixed[]>
      */
     private function getFormats(DatagridInterface $datagrid): array
