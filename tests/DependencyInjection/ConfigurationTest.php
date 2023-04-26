@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -34,12 +34,12 @@ final class ConfigurationTest extends TestCase
                 'contexts' => [
                     0 => 'default',
                 ],
-                'browseRoute' => 'admin_app_media_media_ckeditor_browse',
-                'uploadRoute' => 'admin_app_media_media_ckeditor_upload',
-                'fileProvider' => 'sonata.media.provider.file',
+                'browseRoute'   => 'admin_app_media_media_ckeditor_browse',
+                'uploadRoute'   => 'admin_app_media_media_ckeditor_upload',
+                'fileProvider'  => 'sonata.media.provider.file',
                 'imageProvider' => 'sonata.media.provider.image',
-                'imageContext' => 'default',
-                'imageFormat' => null,
+                'imageContext'  => 'default',
+                'imageFormat'   => null,
             ],
         ];
 

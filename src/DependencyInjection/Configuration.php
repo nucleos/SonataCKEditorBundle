@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -39,7 +39,8 @@ final class Configuration implements ConfigurationInterface
             ->children()
                     ->scalarNode('browse')->defaultValue('@SonataCKEditor/browse.html.twig')->cannotBeEmpty()->end()
                     ->scalarNode('upload')->defaultValue('@SonataCKEditor/upload.html.twig')->cannotBeEmpty()->end()
-            ->end();
+            ->end()
+        ;
 
         return $node;
     }
@@ -62,7 +63,8 @@ final class Configuration implements ConfigurationInterface
                 ->scalarNode('imageProvider')->defaultValue('sonata.media.provider.image')->cannotBeEmpty()->end()
                 ->scalarNode('imageContext')->defaultValue('default')->cannotBeEmpty()->end()
                 ->scalarNode('imageFormat')->defaultNull()->end()
-            ->end();
+            ->end()
+        ;
 
         return $node;
     }

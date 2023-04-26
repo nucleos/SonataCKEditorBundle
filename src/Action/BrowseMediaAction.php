@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -56,12 +56,12 @@ final class BrowseMediaAction
         ?CsrfTokenManagerInterface $csrfTokenManager = null,
         ?CategoryManagerInterface $categoryManager = null
     ) {
-        $this->twig = $twig;
-        $this->admin = $admin;
-        $this->pool = $pool;
-        $this->template = $template;
+        $this->twig             = $twig;
+        $this->admin            = $admin;
+        $this->pool             = $pool;
+        $this->template         = $template;
         $this->csrfTokenManager = $csrfTokenManager;
-        $this->categoryManager = $categoryManager;
+        $this->categoryManager  = $categoryManager;
     }
 
     /**
@@ -93,7 +93,7 @@ final class BrowseMediaAction
 
         if (null !== $this->categoryManager && $request->query->has('category')) {
             $category = $this->categoryManager->findOneBy([
-                'id' => $request->query->get('category'),
+                'id'      => $request->query->get('category'),
                 'context' => $context,
             ]);
 
@@ -111,14 +111,14 @@ final class BrowseMediaAction
         $this->setFormTheme($formView, $this->admin->getFilterTheme());
 
         return new Response($this->twig->render($this->template, [
-            'base_template' => $this->admin->getTemplateRegistry()->getTemplate('layout'),
-            'admin' => $this->admin,
-            'action' => 'ckeditor_browse',
-            'form' => $formView,
-            'datagrid' => $datagrid,
-            'root_category' => $rootCategory,
-            'formats' => $formats,
-            'csrf_token' => $this->getCsrfToken('sonata.batch'),
+            'base_template'  => $this->admin->getTemplateRegistry()->getTemplate('layout'),
+            'admin'          => $this->admin,
+            'action'         => 'ckeditor_browse',
+            'form'           => $formView,
+            'datagrid'       => $datagrid,
+            'root_category'  => $rootCategory,
+            'formats'        => $formats,
+            'csrf_token'     => $this->getCsrfToken('sonata.batch'),
             'export_formats' => [],
         ]));
     }
@@ -141,7 +141,8 @@ final class BrowseMediaAction
     {
         $this->twig
             ->getRuntime(FormRenderer::class)
-            ->setTheme($formView, $theme);
+            ->setTheme($formView, $theme)
+        ;
     }
 
     private function getRootCategoryForContext(string $context): ?CategoryInterface
