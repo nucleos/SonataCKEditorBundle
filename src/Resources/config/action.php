@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -28,7 +28,8 @@ return static function (ContainerConfigurator $container): void {
             '',
             service('security.csrf.token_manager')->nullOnInvalid(),
             service('sonata.media.manager.category')->nullOnInvalid(),
-        ]);
+        ])
+    ;
 
     $services->set(UploadMediaAction::class)
         ->public()
@@ -39,5 +40,6 @@ return static function (ContainerConfigurator $container): void {
             '',
             service('sonata.media.manager.media'),
             service('sonata.media.manager.category')->nullOnInvalid(),
-        ]);
+        ])
+    ;
 };

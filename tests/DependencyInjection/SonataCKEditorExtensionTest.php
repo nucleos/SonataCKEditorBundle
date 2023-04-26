@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -50,21 +50,21 @@ final class SonataCKEditorExtensionTest extends AbstractExtensionTestCase
         $expected = [
             'configs' => [
                 'default' => [
-                    'filebrowserBrowseRoute' => 'admin_app_media_media_ckeditor_browse',
-                    'filebrowserImageBrowseRoute' => 'admin_app_media_media_ckeditor_browse',
+                    'filebrowserBrowseRoute'                => 'admin_app_media_media_ckeditor_browse',
+                    'filebrowserImageBrowseRoute'           => 'admin_app_media_media_ckeditor_browse',
                     'filebrowserImageBrowseRouteParameters' => [
                         'provider' => 'sonata.media.provider.image',
                     ],
-                    'filebrowserUploadMethod' => 'form',
-                    'filebrowserUploadRoute' => 'admin_app_media_media_ckeditor_upload',
+                    'filebrowserUploadMethod'          => 'form',
+                    'filebrowserUploadRoute'           => 'admin_app_media_media_ckeditor_upload',
                     'filebrowserUploadRouteParameters' => [
                         'provider' => 'sonata.media.provider.file',
                     ],
-                    'filebrowserImageUploadRoute' => 'admin_app_media_media_ckeditor_upload',
+                    'filebrowserImageUploadRoute'           => 'admin_app_media_media_ckeditor_upload',
                     'filebrowserImageUploadRouteParameters' => [
                         'provider' => 'sonata.media.provider.image',
-                        'context' => 'default',
-                        'format' => null,
+                        'context'  => 'default',
+                        'format'   => null,
                     ],
                 ],
             ],

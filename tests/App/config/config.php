@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -36,7 +36,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('security', [
         'enable_authenticator_manager' => true,
-        'firewalls' => ['main' => ['security' => true]],
+        'firewalls'                    => ['main' => ['security' => true]],
     ]);
 
     $containerConfigurator->extension('security', ['access_control' => [['path' => '^/.*', 'role' => 'PUBLIC_ACCESS']]]);
@@ -52,10 +52,10 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('sonata_media', ['default_context' => 'default']);
 
     $containerConfigurator->extension('sonata_media', ['contexts' => [
-        'default' => ['providers' => ['sonata.media.provider.file']],
-        'project' => ['providers' => ['sonata.media.provider.file']],
+        'default'            => ['providers' => ['sonata.media.provider.file']],
+        'project'            => ['providers' => ['sonata.media.provider.file']],
         'project_screenshot' => ['providers' => ['sonata.media.provider.file']],
-        'project_download' => ['providers' => ['sonata.media.provider.file']],
+        'project_download'   => ['providers' => ['sonata.media.provider.file']],
     ],
     ]);
 
@@ -69,8 +69,8 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('fos_ck_editor', ['configs' => [
         'custom' => [
-            'locale' => 'de',
-            'height' => 500,
+            'locale'         => 'de',
+            'height'         => 500,
             'allowedContent' => true,
         ],
     ]]);

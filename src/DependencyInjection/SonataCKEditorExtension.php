@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -29,7 +29,7 @@ final class SonataCKEditorExtension extends Extension implements PrependExtensio
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
-        $config = $this->processConfiguration($configuration, $configs);
+        $config        = $this->processConfiguration($configuration, $configs);
 
         $loader = new PhpFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
@@ -37,10 +37,12 @@ final class SonataCKEditorExtension extends Extension implements PrependExtensio
         $loader->load('admin.php');
 
         $container->getDefinition(BrowseMediaAction::class)
-            ->replaceArgument(3, $config['templates']['browse']);
+            ->replaceArgument(3, $config['templates']['browse'])
+        ;
 
         $container->getDefinition(UploadMediaAction::class)
-            ->replaceArgument(3, $config['templates']['upload']);
+            ->replaceArgument(3, $config['templates']['upload'])
+        ;
     }
 
     public function prepend(ContainerBuilder $container): void
@@ -49,10 +51,10 @@ final class SonataCKEditorExtension extends Extension implements PrependExtensio
             return;
         }
 
-        $configs = $container->getExtensionConfig($this->getAlias());
+        $configs      = $container->getExtensionConfig($this->getAlias());
         $resolvingBag = $container->getParameterBag();
-        $configs = $resolvingBag->resolveValue($configs);
-        $config = $this->processConfiguration(new Configuration(), $configs);
+        $configs      = $resolvingBag->resolveValue($configs);
+        $config       = $this->processConfiguration(new Configuration(), $configs);
 
         if (!$config['autoconfig']) {
             return;
@@ -61,22 +63,22 @@ final class SonataCKEditorExtension extends Extension implements PrependExtensio
         $editorConfig = [
             'filebrowserBrowseRoute' => $config['autoconfig']['browseRoute'],
 
-            'filebrowserImageBrowseRoute' => $config['autoconfig']['browseRoute'],
+            'filebrowserImageBrowseRoute'           => $config['autoconfig']['browseRoute'],
             'filebrowserImageBrowseRouteParameters' => [
                 'provider' => 'sonata.media.provider.image',
             ],
 
-            'filebrowserUploadMethod' => 'form',
-            'filebrowserUploadRoute' => $config['autoconfig']['uploadRoute'],
+            'filebrowserUploadMethod'          => 'form',
+            'filebrowserUploadRoute'           => $config['autoconfig']['uploadRoute'],
             'filebrowserUploadRouteParameters' => [
                 'provider' => $config['autoconfig']['fileProvider'],
             ],
 
-            'filebrowserImageUploadRoute' => $config['autoconfig']['uploadRoute'],
+            'filebrowserImageUploadRoute'           => $config['autoconfig']['uploadRoute'],
             'filebrowserImageUploadRouteParameters' => [
                 'provider' => $config['autoconfig']['imageProvider'],
-                'context' => $config['autoconfig']['imageContext'],
-                'format' => $config['autoconfig']['imageFormat'],
+                'context'  => $config['autoconfig']['imageContext'],
+                'format'   => $config['autoconfig']['imageFormat'],
             ],
         ];
 

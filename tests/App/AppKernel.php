@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the Sonata Project package.
+ * This file is part of the SonataAutoConfigureBundle package.
  *
- * (c) Thomas Rabaix <thomas.rabaix@sonata-project.org>
+ * (c) Christian Gripp <mail@core23.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -44,18 +44,31 @@ final class AppKernel extends Kernel
     public function registerBundles(): iterable
     {
         yield new FrameworkBundle();
+
         yield new TwigBundle();
+
         yield new SecurityBundle();
+
         yield new DoctrineBundle();
+
         yield new SonataDoctrineBundle();
+
         yield new SonataTwigBundle();
+
         yield new SonataFormBundle();
+
         yield new SonataMediaBundle();
+
         yield new SonataAdminBundle();
+
         yield new SonataDoctrineORMAdminBundle();
+
         yield new SonataBlockBundle();
+
         yield new KnpMenuBundle();
+
         yield new FOSCKEditorBundle();
+
         yield new SonataCKEditorBundle();
     }
 
@@ -78,9 +91,11 @@ final class AppKernel extends Kernel
     {
         if ($routes instanceof RoutingConfigurator) {
             $routes->import('@SonataAdminBundle/Resources/config/routing/sonata_admin.xml')
-                ->prefix('/admin');
+                ->prefix('/admin')
+            ;
             $routes->import('.', 'sonata_admin')
-                ->prefix('/admin');
+                ->prefix('/admin')
+            ;
 
             return;
         }
