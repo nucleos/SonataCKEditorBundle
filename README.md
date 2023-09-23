@@ -44,7 +44,7 @@ return [
 ```yaml
 sonata_ck_editor:
     templates:
-        browser: '@SonataCKEditor/browser.html.twig'
+        browse: '@SonataCKEditor/browser.html.twig'
         upload: '@SonataCKEditor/upload.html.twig'
     autoconfig: # Can be disabled
         contexts: [default]
