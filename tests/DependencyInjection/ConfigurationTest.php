@@ -43,7 +43,7 @@ final class ConfigurationTest extends TestCase
             ],
         ];
 
-        static::assertSame($expected, $config);
+        self::assertSame($expected, $config);
     }
 
     public function testOptionsWithDisabledAutoConfig(): void
@@ -61,6 +61,6 @@ final class ConfigurationTest extends TestCase
             ],
         ];
 
-        static::assertSame($expected, $config);
+        self::assertSame($expected, $config);
     }
 }
