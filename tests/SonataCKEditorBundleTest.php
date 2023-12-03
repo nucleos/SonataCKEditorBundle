@@ -28,6 +28,6 @@ final class SonataCKEditorBundleTest extends TestCase
 
     public function testCompilerPasses(): void
     {
-        static::assertInstanceOf(SonataCKEditorExtension::class, $this->bundle->getContainerExtension());
+        self::assertInstanceOf(SonataCKEditorExtension::class, $this->bundle->getContainerExtension());
     }
 }

@@ -70,7 +70,7 @@ final class SonataCKEditorExtensionTest extends AbstractExtensionTestCase
             ],
         ];
 
-        static::assertSame($expected, $container->getExtensionConfig('fos_ck_editor')[0]);
+        self::assertSame($expected, $container->getExtensionConfig('fos_ck_editor')[0]);
     }
 
     protected function getContainerExtensions(): array

@@ -15,6 +15,4 @@ namespace Nucleos\SonataCKEditorBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class SonataCKEditorBundle extends Bundle
-{
-}
+final class SonataCKEditorBundle extends Bundle {}

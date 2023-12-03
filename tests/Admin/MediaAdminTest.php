@@ -20,17 +20,17 @@ final class MediaAdminTest extends IntegrationTestCase
 {
     public function testBrowse(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('GET', '/admin/tests/app/media/ckeditor-browse');
 
-        static::assertResponseIsSuccessful();
+        self::assertResponseIsSuccessful();
     }
 
     public function testUpload(): void
     {
         $uploadedFile = $this->createUploadFile();
 
-        $client = static::createClient();
+        $client = self::createClient();
         $client->request('POST', '/admin/tests/app/media/ckeditor-upload?provider=sonata.media.provider.file&CKEditorFuncNum=callBack', [
         ], [
             'upload' => $uploadedFile,
@@ -38,10 +38,10 @@ final class MediaAdminTest extends IntegrationTestCase
 
         $response = $client->getResponse()->getContent();
 
-        static::assertResponseIsSuccessful();
-        static::assertIsString($response);
-        static::assertStringContainsString('.txt', $response);
-        static::assertStringContainsString('callBack', $response);
+        self::assertResponseIsSuccessful();
+        self::assertIsString($response);
+        self::assertStringContainsString('.txt', $response);
+        self::assertStringContainsString('callBack', $response);
     }
 
     private function createUploadFile(): UploadedFile
