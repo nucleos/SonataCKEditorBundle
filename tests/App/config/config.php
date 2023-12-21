@@ -16,6 +16,7 @@ namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 use Nucleos\SonataCKEditorBundle\Tests\App\Entity\Gallery;
 use Nucleos\SonataCKEditorBundle\Tests\App\Entity\GalleryItem;
 use Nucleos\SonataCKEditorBundle\Tests\App\Entity\Media;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->extension('framework', ['secret' => 'MySecret']);
@@ -34,10 +35,16 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 
     $containerConfigurator->extension('twig', ['form_themes' => ['@FOSCKEditor/Form/ckeditor_widget.html.twig']]);
 
-    $containerConfigurator->extension('security', [
-        'enable_authenticator_manager' => true,
-        'firewalls'                    => ['main' => ['security' => true]],
-    ]);
+    $securityConfig = [
+        'firewalls' => ['main' => ['security' => true]],
+    ];
+
+    // TODO: Remove if when dropping support of Symfony 5.4
+    if (!class_exists(IsGranted::class)) {
+        $securityConfig['enable_authenticator_manager'] = true;
+    }
+
+    $containerConfigurator->extension('security', $securityConfig);
 
     $containerConfigurator->extension('security', ['access_control' => [['path' => '^/.*', 'role' => 'PUBLIC_ACCESS']]]);
 
