@@ -2,27 +2,32 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 1.1.0 - TBD
+## 1.1.0 - 2024-05-25
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [1.1.0](https://github.com/nucleos/SonataCKEditorBundle/milestone/3)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 1.1.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **6**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [94: Update dependency psalm/plugin-phpunit to ^0.19.0](https://github.com/nucleos/SonataCKEditorBundle/pull/94) thanks to @renovate[bot]
+ - [93: Add support for doctrine/orm v3](https://github.com/nucleos/SonataCKEditorBundle/pull/93) thanks to @renovate[bot]
+ - [91: Bump to symfony ^6.4 || ^7.0](https://github.com/nucleos/SonataCKEditorBundle/pull/91) thanks to @core23
+ - [89: Update dependency symfony/phpunit-bridge to v7](https://github.com/nucleos/SonataCKEditorBundle/pull/89) thanks to @renovate[bot]
+ - [88: Update dependency matthiasnoback/symfony-dependency-injection-test to v5](https://github.com/nucleos/SonataCKEditorBundle/pull/88) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [90: Update tools ](https://github.com/nucleos/SonataCKEditorBundle/pull/90) thanks to @core23
 
 ## 1.0.0 - 2023-04-29
 
