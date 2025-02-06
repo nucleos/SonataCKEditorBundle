@@ -1,3 +1,10 @@
+WARNING: This repository is deprecated
+======================================
+
+As the CKEDITOR changed it's pricing model, this project will no longer receive any updates.
+
+You might use [FOSCKEditorBundle](https://github.com/FriendsOfSymfony/FOSCKEditorBundle) instead.
+
 SonataCKEditorBundle
 =========================
 

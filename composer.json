@@ -3,6 +3,7 @@
     "description": "Symfony Bundle that allows sonata media management for the CKEditor.",
     "license": "MIT",
     "type": "symfony-bundle",
+    "abandoned": true,
     "keywords": [
         "symfony",
         "sonata",
